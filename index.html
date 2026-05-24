@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyQuest - Interactive Python Learning</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CodeMirror CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/theme/dracula.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app-container">
+        <!-- Header -->
+        <header id="game-header">
+            <div class="logo">
+                <span class="logo-icon">🧙</span>
+                <h1>PyQuest</h1>
+            </div>
+            <div class="progress-container">
+                <div class="level-badge" id="level-badge">Lvl 1</div>
+                <div class="xp-bar-wrapper">
+                    <div class="xp-bar" id="xp-bar"></div>
+                </div>
+                <div class="xp-text"><span id="current-xp">0</span> XP</div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main id="game-main">
+            <!-- Sidebar (World Map) -->
+            <aside id="sidebar">
+                <h2>Worlds</h2>
+                <ul id="world-list">
+                    <!-- Worlds injected by JS -->
+                </ul>
+                
+                <div class="badges-panel">
+                    <h2>Badges</h2>
+                    <div id="badges-container">
+                        <!-- Badges injected by JS -->
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Center Panel (Challenge Context) -->
+            <section id="challenge-panel">
+                <div class="challenge-header">
+                    <span class="challenge-world" id="challenge-world-label">World 1</span>
+                    <h2 id="challenge-title">The Awakening</h2>
+                </div>
+                
+                <div class="story-box">
+                    <p id="challenge-story">Story context goes here...</p>
+                </div>
+                
+                <div class="task-box">
+                    <h3>🎯 Quest Objective</h3>
+                    <p id="challenge-task">Task description goes here...</p>
+                </div>
+                
+                <div id="hints-container">
+                    <button id="btn-hint" class="btn secondary">💡 Hint (-10 XP)</button>
+                    <div id="hint-text" class="hidden"></div>
+                </div>
+            </section>
+
+            <!-- Right Panel (Editor & Output) -->
+            <section id="editor-panel">
+                <div class="editor-header">
+                    <span>Scroll of Python</span>
+                    <button id="btn-run" class="btn primary">▶ Cast Spell (Run)</button>
+                </div>
+                
+                <div class="editor-container">
+                    <textarea id="code-editor"></textarea>
+                </div>
+                
+                <div class="output-container">
+                    <div class="output-header">Vision Pool (Console)</div>
+                    <pre id="console-output"></pre>
+                    <div id="feedback-panel" class="hidden"></div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Victory Modal -->
+        <div id="victory-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2 id="modal-title">Challenge Complete!</h2>
+                <div id="modal-reward">+50 XP</div>
+                <p id="modal-message">You have mastered this spell.</p>
+                <button id="btn-next" class="btn primary">Continue Quest</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <!-- CodeMirror -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.13/mode/python/python.min.js"></script>
+    
+    <!-- Skulpt for Python Execution -->
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/skulpt@1.2.0/dist/skulpt-stdlib.js"></script>
+    
+    <!-- Custom Game Logic -->
+    <script src="game.js"></script>
+</body>
+</html>
